@@ -39,7 +39,12 @@ namespace gtkmm_cpp_helper {
   typedef pair<string, STRUCT_WIDGET> WIDGET_ITEM;
 
   struct STRUCT_WIDGET {
-    Gtk::Widget *widget;
+    union {
+      Gtk::Widget *widget;
+      Gtk::Dialog *dialog;
+      Gtk::Window *window;
+      //Gtk::ApplicationWindow *applicationWindow;
+    };
     WIDGET_EVENT_CALLBACK_MAP events;
     WIDGET_MAP inner_widgets;
   };  
@@ -56,7 +61,7 @@ namespace gtkmm_cpp_helper {
     
     void load_file(string filepath);
 
-    Gtk::Dialog * operator [] (string widget_name);
+    STRUCT_WIDGET operator [] (string widget_name);
   };
   
 }

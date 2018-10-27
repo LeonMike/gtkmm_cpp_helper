@@ -30,10 +30,16 @@ namespace gtkmm_cpp_helper {
     gtkBuilder->add_from_file(filepath.c_str());
   }
 
-  Gtk::Dialog * Builder::operator [] (string widget_name) {
-    Gtk::Dialog *result;
-    gtkBuilder->get_widget(widget_name, result);
-    return result;
+  STRUCT_WIDGET Builder::operator [] (string widget_name) {
+    STRUCT_WIDGET widget_found;
+    widget_found.widget = nullptr;
+    WIDGET_ITEM widget_item(widget_name, widget_found);
+    widgets.insert(widget_item);
+    gtkBuilder->get_widget(widget_name, widgets[widget_name].widget);
+    if (widgets[widget_name].widget)
+      return widgets[widget_name];
+    else
+      exit(1);
   }
   
 }

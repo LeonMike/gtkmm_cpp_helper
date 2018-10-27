@@ -33,6 +33,18 @@ namespace gtkmm_cpp_helper {
   Application::~Application() {
   }
 
+  void Application::Run(Dialog *widget) {
+    app->run(*widget);
+  }
+
+  void Application::Run(Window *widget) {
+    app->run(*widget);
+  }
+
+  /*void Application::Run(ApplicationWindow *widget) {
+    app->run(GTK_APPLICATION_WINDOW(*widget));
+    }*/
+  
   RPTR(GBUILDER) Application::load_file(string key, string filepath) {
     cout << "now creating new builder" << endl;
     builders.insert(BUILDER_ITEM(key, new HLPBUILDER()));
@@ -42,8 +54,12 @@ namespace gtkmm_cpp_helper {
     return builders[key]->gtkBuilder;
   }
 
-  HLPBUILDER* Application::operator [] (string key) {
-    return builders[key];
+  HLPBUILDER & Application::operator [] (string key) {
+    return *builders[key];
   }
+
+  /*HLPBUILDER & Application::operator [] (const char *key) {
+    return *builders[key];
+    }*/
   
 }

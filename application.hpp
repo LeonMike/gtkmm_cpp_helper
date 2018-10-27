@@ -45,9 +45,13 @@ namespace gtkmm_cpp_helper {
     Application(int argc, char **argv);
     ~Application();
 
+    void Run(Dialog *widget);
+    void Run(Window *widget);
+    void Run(ApplicationWindow *widget);
     RPTR(GBUILDER) load_file(string key, string filepath);
 
-    HLPBUILDER * operator [] (string key);
+    HLPBUILDER & operator [] (string key);
+    //HLPBUILDER & operator [] (const char *key);
   };
 
 }
