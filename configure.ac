@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([qlite_cpp_helper], [0.1], [leon_mike@live.com.mx])
+AC_INIT([sqlite_cpp_helper], [0.1], [leon_mike@live.com.mx])
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AC_CONFIG_SRCDIR([application.hpp])
 AC_CONFIG_HEADERS([config.h])
