@@ -17,7 +17,7 @@
 
 #include <builder.hpp>
 
-namespace gtkmm_helper {
+namespace gtkmm_cpp_helper {
 
   Builder::Builder() {
     gtkBuilder = Gtk::Builder::create();
@@ -28,6 +28,12 @@ namespace gtkmm_helper {
 
   void Builder::load_file(string filepath) {
     gtkBuilder->add_from_file(filepath.c_str());
+  }
+
+  Gtk::Dialog * Builder::operator [] (string widget_name) {
+    Gtk::Dialog *result;
+    gtkBuilder->get_widget(widget_name, result);
+    return result;
   }
   
 }

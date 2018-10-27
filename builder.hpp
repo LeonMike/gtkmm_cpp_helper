@@ -21,14 +21,14 @@
 #include <map>
 
 #define  GBUILDER          Gtk::Builder
-#define  HLPBUILDER        gtkmm_helper::Builder
+#define  HLPBUILDER        gtkmm_cpp_helper::Builder
 #ifndef RPTR
 #define  RPTR(type)        Glib::RefPtr<type>
 #endif
 
 using namespace std;
 
-namespace gtkmm_helper {
+namespace gtkmm_cpp_helper {
 
   struct STRUCT_WIDGET;
   
@@ -55,6 +55,8 @@ namespace gtkmm_helper {
     RPTR(GBUILDER)  gtkBuilder;
     
     void load_file(string filepath);
+
+    Gtk::Dialog * operator [] (string widget_name);
   };
   
 }

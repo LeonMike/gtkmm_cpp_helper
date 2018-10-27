@@ -31,7 +31,7 @@
 using namespace Gtk;
 using namespace std;
 
-namespace gtkmm_helper {
+namespace gtkmm_cpp_helper {
 
   typedef map<string, HLPBUILDER*>  BUILDER_MAP;
   typedef pair<string, HLPBUILDER*> BUILDER_ITEM;
@@ -46,7 +46,8 @@ namespace gtkmm_helper {
     ~Application();
 
     RPTR(GBUILDER) load_file(string key, string filepath);
-    
+
+    HLPBUILDER * operator [] (string key);
   };
 
 }

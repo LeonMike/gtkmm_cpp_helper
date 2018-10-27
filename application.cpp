@@ -22,7 +22,7 @@
 using namespace Gtk;
 using namespace std;
 
-namespace gtkmm_helper {
+namespace gtkmm_cpp_helper {
 
   Application::Application(int argc, char **argv) {
     cout << "now starting Application object" << endl;
@@ -40,6 +40,10 @@ namespace gtkmm_helper {
     builders[key]->load_file(filepath);
     cout << "load completed" << endl;
     return builders[key]->gtkBuilder;
+  }
+
+  HLPBUILDER* Application::operator [] (string key) {
+    return builders[key];
   }
   
 }
